@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Resistor from '@/components/resistor';
 
 export default function Home() {
   return (
@@ -22,24 +22,42 @@ export default function Home() {
       }}
       >
         <Container>
-          <Stack gap={2} alignItems="center">
+          <Stack gap={7} alignItems="center">
             <Typography
+            variant="h1"
               sx={{
                 color: "#fff",
-                textAlign: "center"
+                textAlign: "center",
+                fontSize: {md: "4rem", xs: "2rem"},
               }}
-            variant='h1'
+              
             >
               Welcome to Resistor Website</Typography>
-            <Button
-            variant="contained"
-            color="secondary"
-            onClick={()=>alert("under development")}
-            endIcon={<ArrowDownwardIcon />}
-            sx={{
-              width: "12rem",
-            }}
-            >Explore</Button>
+                <Box
+                  sx={{
+                    position: "relative",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                  className="resistor_container"
+                >
+                  <Resistor height={{md: "15px", xs: "10px"}} width={{md: "400px", xs: "300px"}} />
+                  <Button
+                      color="gray"
+                      sx={{
+                          position: "absolute",
+                          width: "100%",
+                          height: "100%",
+                          color: "#fff",
+                          fontWeight: "bold",
+                          zIndex: "10",
+                          fontSize: {md: "1rem", xs: "0.8rem"}
+                      }}
+                      >
+                          GET STARTED
+                    </Button>
+                </Box>
           </Stack>
         </Container>
       </Box>

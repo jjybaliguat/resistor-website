@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import Head from 'next/head'
 import { theme } from '../../theme'
+import "../../theme/custom.css"
 
 export default function App({ Component, pageProps }) {
   return (

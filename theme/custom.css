@@ -1,0 +1,4 @@
+.resistor_container:hover{
+    transform: rotate(5deg);
+    transition: all 0.5s ease-in-out;
+}
