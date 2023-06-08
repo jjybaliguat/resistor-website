@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function Home() {
   return (
@@ -34,8 +35,9 @@ export default function Home() {
             variant="contained"
             color="secondary"
             onClick={()=>alert("under development")}
+            endIcon={<ArrowDownwardIcon />}
             sx={{
-              width: "12rem"
+              width: "12rem",
             }}
             >Explore</Button>
           </Stack>
