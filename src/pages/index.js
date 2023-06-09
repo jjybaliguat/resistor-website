@@ -3,6 +3,11 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material'
 import Resistor from '@/components/resistor';
 
 export default function Home() {
+
+  const handleClick = () => {
+    const title = document.querySelector('.welcome_page')
+    title.classList.add("remove")
+  }
   return (
     <>
       <Head>
@@ -11,55 +16,82 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box 
-      sx={{
-        height: "100vh",
-        width: "100%",
-        bgcolor: "#000",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
+      <Box
+        sx={{
+          position: "relative"
+        }}
       >
-        <Container>
-          <Stack gap={7} alignItems="center">
-            <Typography
-            variant="h1"
-              sx={{
-                color: "#fff",
-                textAlign: "center",
-                fontSize: {md: "4rem", xs: "2rem"},
-              }}
-              
-            >
-              Welcome to Resistor Website</Typography>
-                <Box
-                  sx={{
-                    position: "relative",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                  className="resistor_container"
-                >
-                  <Resistor height={{md: "15px", xs: "10px"}} width={{md: "400px", xs: "300px"}} />
-                  <Button
-                      color="gray"
-                      sx={{
-                          position: "absolute",
-                          width: "100%",
-                          height: "100%",
-                          color: "#fff",
-                          fontWeight: "bold",
-                          zIndex: "10",
-                          fontSize: {md: "1rem", xs: "0.8rem"}
-                      }}
-                      >
-                          GET STARTED
-                    </Button>
-                </Box>
-          </Stack>
-        </Container>
+        <Box
+          sx={{
+            height: "100vh",
+            width: "100%",
+            bgcolor: "primary.contrastText",
+            zIndex: "99",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <Box>
+            <Resistor height={{md: "25px", xs: "20px"}} width={{md: "550px", xs: "400px"}} />
+          </Box>
+        </Box>
+        <Box 
+        sx={{
+          position: "absolute",
+          height: "100vh",
+          width: "100%",
+          bgcolor: "background.dark",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          top: "0",
+          zIndex: "999"
+        }}
+        className="welcome_page"
+        >
+          <Container>
+            <Stack gap={7} alignItems="center">
+              <Typography
+                variant="h1"
+                sx={{
+                  color: "primary.contrastText",
+                  textAlign: "center",
+                  fontSize: {md: "4rem", xs: "2rem"},
+                  fontWeight: "900"
+                }}
+              >
+                Welcome to Resistor Website</Typography>
+                  <Box
+                    sx={{
+                      position: "relative",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                    className="resistor_container"
+                  >
+                    <Resistor height={{md: "20px", xs: "15px"}} width={{md: "500px", xs: "350px"}} />
+                    <Button
+                        color="gray"
+                        sx={{
+                            position: "absolute",
+                            width: "100%",
+                            height: "100%",
+                            color: "#fff",
+                            fontWeight: "bold",
+                            zIndex: "10",
+                            fontSize: {md: "2rem", xs: "1rem"},
+                            zIndex: "10"
+                        }}
+                        onClick={()=>handleClick()}
+                        >
+                            GET STARTED
+                      </Button>
+                  </Box>
+            </Stack>
+          </Container>
+        </Box>
       </Box>
     </>
   )

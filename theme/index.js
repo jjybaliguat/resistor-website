@@ -178,7 +178,7 @@ export const theme = createTheme({
     },
     gray: {
       main: '#898da3',
-      light: '#d4d4d4'
+      light: '#BAB9B6'
     },
     info: {
       main: '#2196F3',
@@ -239,7 +239,7 @@ export const theme = createTheme({
     button: {
       fontWeight: 600
     },
-    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+    fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
