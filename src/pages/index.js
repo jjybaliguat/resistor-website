@@ -3,7 +3,7 @@ import { Box, Button, Container, Drawer, Stack, Typography } from '@mui/material
 import Resistor from '@/components/resistor';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
-import ToggleTheme from '@/components/Menu';
+import ToggleTheme from '@/components/ToggleDark';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SideMenu from '@/components/Drawer';
@@ -44,9 +44,7 @@ export default function Home() {
           }}
           onClick={()=>setHideNav(!hideNav)}
         >
-          {
-            hideNav ? <CloseIcon /> : <MenuIcon />
-          }
+          <MenuIcon />
         </Button>
         <ToggleTheme />
         <Box
