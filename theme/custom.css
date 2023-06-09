@@ -21,7 +21,7 @@
 } */
 
 .remove{
-    top: -100%;
+    top: -100vh;
     /* opacity: 0; */
     transition: all 1s ease-in-out;
 }
