@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Box, Button, Container, Drawer, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Drawer, Paper, Stack, Typography } from '@mui/material'
 import Resistor from '@/components/resistor';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
@@ -8,7 +8,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SideMenu from '@/components/Drawer';
 
-export default function Home() {
+export default function Home(props) {
+  const {mode, setMode} = props
   const [colors, setColors] = useState(null)
   const [resistorType, setResistorType] = useState("3 Band Resistor")
   const [hideNav, setHideNav] = useState(false)
@@ -27,7 +28,7 @@ export default function Home() {
       </Head>
       <Box
         sx={{
-          position: "relative"
+          position: "relative",
         }}
       >
         <SideMenu
@@ -44,14 +45,20 @@ export default function Home() {
           }}
           onClick={()=>setHideNav(!hideNav)}
         >
-          <MenuIcon />
+          <MenuIcon
+          color="primary" 
+          sx={{
+            fontSize: "2rem",
+          }}
+           />
         </Button>
-        <ToggleTheme />
+        <ToggleTheme mode={mode} setMode={setMode} />
+        <Paper sx={{height: "100vh"}}>
         <Box
           sx={{
             height: "100vh",
             width: "100%",
-            bgcolor: "primary.contrastText",
+            // bgcolor: "primary.contrastText",
             zIndex: "99",
             display: "flex",
             justifyContent: "center",
@@ -88,7 +95,7 @@ export default function Home() {
               <Box
                 sx={{
                   height: "fit-content",
-                  bgcolor: "primary.contrastText",
+                  // bgcolor: "primary.contrastText",
                   position: "absolute",
                   top: "2rem",
                   left: "3rem",
@@ -102,12 +109,13 @@ export default function Home() {
             </Box>
           </Stack>
         </Box>
+        </Paper>
         <Box 
         sx={{
           position: "absolute",
           height: "100vh",
           width: "100%",
-          bgcolor: "background.dark",
+          bgcolor: "#000",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -121,7 +129,7 @@ export default function Home() {
               <Typography
                 variant="h1"
                 sx={{
-                  color: "primary.contrastText",
+                  color: "#fff",
                   textAlign: "center",
                   fontSize: {md: "4rem", xs: "2rem"},
                   fontWeight: "900"
@@ -139,7 +147,7 @@ export default function Home() {
                   >
                     <Resistor height={{md: "20px", xs: "15px"}} width={{md: "500px", xs: "350px"}} />
                     <Button
-                        color="gray"
+                        // color="gray"
                         sx={{
                             position: "absolute",
                             width: "100%",

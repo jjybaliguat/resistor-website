@@ -16,7 +16,7 @@ const Resistor = (props) => {
         <Box
             sx={{
                 position: "relative",
-                bgcolor: "gray.light",
+                bgcolor: "grey",
                 ...props,
             }}
         >

@@ -32,7 +32,7 @@ const SideMenu = (props) => {
             onClose={()=>setHideNav(!hideNav)}
             PaperProps={{
                 sx: {
-                  backgroundColor: 'background.dark',
+                //   backgroundColor: 'background.dark',
                   color: '#FFFFFF',
                   width: 280
                 }

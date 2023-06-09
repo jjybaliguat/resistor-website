@@ -1,10 +1,10 @@
 import { Box } from '@mui/material'
 import React, { useState } from 'react'
 
-const ToggleTheme = () => {
-  const [dark, setDark] = useState(false)
+const ToggleTheme = (props) => {
+  const {mode, setMode} = props
 
-  const ToggleDark = () => setDark(!dark)
+  const ToggleDark = () => setMode(!mode)
 
   return (
     <Box
@@ -15,7 +15,7 @@ const ToggleTheme = () => {
         right: "20px",
         width: {md: "60px", xs: "40px"},
         height: {md:"30px", xs: "20px"},
-        bgcolor: dark ? "#000" : "gray.light",
+        bgcolor: mode ? "#000" : "grey",
         borderRadius: "15px",
         outline: "1px solid #b3b1b1",
         boxShadow: "5px 6px 10px 2px #b3b1b1",
@@ -23,13 +23,13 @@ const ToggleTheme = () => {
         "&::before": {
           position: "absolute",
           content: "''",
-          backgroundColor: "primary.contrastText",
+          backgroundColor: "#fff",
           width: {md: "25px", xs: "15px"},
           height: {md: "25px", xs: "15px"},
           borderRadius: "50%",
           top: "2px",
-          left: dark ? "" : "2px",
-          right: dark ? "2px" : "",
+          left: mode ? "" : "2px",
+          right: mode ? "2px" : "",
         }
       }}
     >
