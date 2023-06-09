@@ -22,6 +22,7 @@
 
 .remove{
     z-index: -1 !important;
+    top: -100% !important;
     opacity: 0 !important;
     transition: all 1s ease-in-out;
 }
