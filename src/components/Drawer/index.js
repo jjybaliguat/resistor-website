@@ -42,7 +42,7 @@ const SideMenu = (props) => {
             {
                 menuItems.map((item, index)=> {
                     return (
-                        <NavItem
+                        <NavItem key={index}
                             // icon={<DashboardIcon fontSize="small" />}
                             href={item.href}
                             title={item.title}
