@@ -2,6 +2,7 @@ import { Box, Button } from '@mui/material'
 import React from 'react'
 
 const Resistor = (props) => {
+    const {colors} = props
 
   return (
     <Box
@@ -10,6 +11,7 @@ const Resistor = (props) => {
             alignItems: "center",
             justifyContent: "center",
         }}
+        className="container"
     >
         <Box
             sx={{
@@ -25,10 +27,11 @@ const Resistor = (props) => {
                     width: "20%",
                     borderRadius: "20px",
                     bgcolor: "#815C00 ",
-                    left: "60px",
+                    left: "50px",
                     transform: 'translateY(-39%)',
                     zIndex: "9"
                 }}
+                className="container"
             />
             <Box
                 sx={{
@@ -47,6 +50,7 @@ const Resistor = (props) => {
                     transform: 'translateY(-33%)',
                     zIndex: "8",
                 }}
+                className="container"
             >
             </Box>
             <Box
@@ -56,10 +60,11 @@ const Resistor = (props) => {
                     height: "500%",
                     width: "20%",
                     bgcolor: "#815C00",
-                    right: "60px",
+                    right: "50px",
                     transform: 'translateY(-39%)',
                     zIndex: "9"
                 }}
+                className="container"
             />
         </Box>
     </Box>

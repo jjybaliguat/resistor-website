@@ -19,6 +19,21 @@
         transform: rotate(5deg)
     }
 } */
+.container{
+    box-shadow: 5px 6px 10px 5px #4e4e4e;
+    /* outline: 1px solid #4e4e4e; */
+}
+
+.container.resistance::after{
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 4.3rem;
+    background-color: #4e4e4e;
+    top: 50px;
+    right: -3rem;
+    transform: rotate(70deg);
+}
 
 .remove{
     z-index: -1 !important;
@@ -27,22 +42,7 @@
     transition: all 1s ease-in-out;
 }
 
-/*
-@keyframes disapper {
-    from {
-        opacity: 0.8;
-    }
-    25% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 0.4;
-    }
-    75% {
-        opacity: 0.2;
-    }
-    to {
-        opacity: 0;
-        display: none;
-    }
-} */
+input:checked + .button {
+    background-color: #000 !important;
+}
+

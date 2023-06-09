@@ -1,8 +1,17 @@
 import Head from 'next/head'
-import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Drawer, Stack, Typography } from '@mui/material'
 import Resistor from '@/components/resistor';
+import { useState } from 'react';
+import Footer from '@/components/Footer';
+import ToggleTheme from '@/components/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import SideMenu from '@/components/Drawer';
 
 export default function Home() {
+  const [colors, setColors] = useState(null)
+  const [resistorType, setResistorType] = useState("3 Band Resistor")
+  const [hideNav, setHideNav] = useState(false)
 
   const handleClick = () => {
     const title = document.querySelector('.welcome_page')
@@ -21,6 +30,25 @@ export default function Home() {
           position: "relative"
         }}
       >
+        <SideMenu
+          hideNav={hideNav}
+          setHideNav={setHideNav}
+        />
+        <Button
+          sx={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            cursor: "pointer",
+            color: "black"
+          }}
+          onClick={()=>setHideNav(!hideNav)}
+        >
+          {
+            hideNav ? <CloseIcon /> : <MenuIcon />
+          }
+        </Button>
+        <ToggleTheme />
         <Box
           sx={{
             height: "100vh",
@@ -29,12 +57,52 @@ export default function Home() {
             zIndex: "99",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center"
+            // alignItems: "center"
           }}
         >
-          <Box>
-            <Resistor height={{md: "25px", xs: "20px"}} width={{md: "550px", xs: "400px"}} />
-          </Box>
+          <Stack gap={3}
+            sx={{
+              paddingTop: "3rem"
+            }}
+          >
+            <Typography variant="h1"
+              sx={{
+                textAlign: "center",
+                fontSize: {md: "3rem", xs: "2rem"}
+              }}
+            >{resistorType}</Typography>
+            <Box
+              sx={{
+                height: "fit-content",
+                padding: "10rem 1rem 1rem",
+                // bgcolor: "#000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <Resistor 
+                  height={{md: "25px", xs: "20px"}} 
+                  width={{md: "550px", xs: "400px"}} 
+                  colors={colors}
+                  />
+              <Box
+                sx={{
+                  height: "fit-content",
+                  bgcolor: "primary.contrastText",
+                  position: "absolute",
+                  top: "2rem",
+                  left: "3rem",
+                  padding: "10px",
+                  borderRadius: "5px"
+                }}
+                className="container resistance"
+              >
+                0 ohm Resistance
+              </Box>
+            </Box>
+          </Stack>
         </Box>
         <Box 
         sx={{
@@ -81,7 +149,7 @@ export default function Home() {
                             color: "#fff",
                             fontWeight: "bold",
                             zIndex: "10",
-                            fontSize: {md: "2rem", xs: "1rem"},
+                            fontSize: {md: "1.5rem", xs: "1rem"},
                             zIndex: "10"
                         }}
                         onClick={()=>handleClick()}
@@ -92,6 +160,7 @@ export default function Home() {
             </Stack>
           </Container>
         </Box>
+        <Footer setResistorType={setResistorType} />
       </Box>
     </>
   )
