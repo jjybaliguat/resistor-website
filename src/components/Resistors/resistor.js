@@ -1,23 +1,22 @@
-import { Box, Button } from '@mui/material'
-import React from 'react'
+import { Box, Button, Stack } from '@mui/material'
+import React, { useState } from 'react'
+import ColorDialog from '../Dialogs/colorDialog'
 
 const Resistor = (props) => {
-    const {colors} = props
+    const {height, width} = props
+
 
   return (
+    <>
     <Box
-        sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        }}
         className="container"
     >
         <Box
             sx={{
                 position: "relative",
                 bgcolor: "grey",
-                ...props,
+                height: height,
+                width: width
             }}
         >
             <Box
@@ -42,7 +41,7 @@ const Resistor = (props) => {
                     height: "400%",
                     width: "50%",
                     borderRadius: "5px",
-                    bgcolor: "#815C00 ",
+                    bgcolor: "#815C00",
                     left: "0",
                     right: "0",
                     marginRight: "auto",
@@ -68,6 +67,7 @@ const Resistor = (props) => {
             />
         </Box>
     </Box>
+    </>
   )
 }
 

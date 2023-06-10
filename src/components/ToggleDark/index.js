@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 
 const ToggleTheme = (props) => {
   const {mode, setMode} = props
@@ -11,14 +11,14 @@ const ToggleTheme = (props) => {
       onClick={ToggleDark}
       sx={{
         position: "absolute",
-        top: "20px",
-        right: "20px",
+        bottom: "20px",
+        left: "20px",
         width: {md: "60px", xs: "40px"},
         height: {md:"30px", xs: "20px"},
         bgcolor: mode ? "#000" : "grey",
         borderRadius: "15px",
         outline: "1px solid #b3b1b1",
-        boxShadow: "5px 6px 10px 2px #b3b1b1",
+        boxShadow: "1px 3px 10px 3px #b3b1b1",
         cursor: "pointer",
         "&::before": {
           position: "absolute",

@@ -23,17 +23,29 @@
     box-shadow: 5px 6px 10px 5px #4e4e4e;
     /* outline: 1px solid #4e4e4e; */
 }
-
+/* 
 .container.resistance::after{
     content: "";
     position: absolute;
     height: 5px;
-    width: 4.3rem;
+    width: 3.8rem;
     background-color: #4e4e4e;
-    top: 50px;
-    right: -3rem;
+    top: 75px;
+    right: 1rem;
     transform: rotate(70deg);
+    z-index: 1;
 }
+.container.tolerance::before{
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 3.8rem;
+    background-color: #4e4e4e;
+    top: 75px;
+    left: 1rem;
+    transform: rotate(-70deg);
+    z-index: 1;
+}  */
 
 .remove{
     z-index: -1 !important;

@@ -1,8 +1,12 @@
+import { setResistorIndex } from '@/redux/homepageAction'
 import { Box, Button, Stack } from '@mui/material'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
 const Footer = (props) => {
-    const {setResistorType} = props
+    const {ResistorMenuBtns} = props
+    const dispatch = useDispatch()
+
   return (
     <Box
     sx={{
@@ -13,34 +17,26 @@ const Footer = (props) => {
         padding: "2rem",
         display: "flex",
         justifyContent: "center",
-        display: {md: "flex", xs: "none"}
     }}
     >
-        <Stack direction="row" gap={5} alignitems= "center">
-            <Button
-                variant="contained"
-                onClick={()=>setResistorType("3 Band Resistor")}
-            >
-                3 Band Resitor
-            </Button>
-            <Button
-                variant="contained"
-                onClick={()=>setResistorType("4 Band Resistor")}
-            >
-                4 Band Resitor
-            </Button>
-            <Button
-                variant="contained"
-                onClick={()=>setResistorType("5 Band Resistor")}
-            >
-                5 Band Resitor
-            </Button>
-            <Button
-                variant="contained"
-                onClick={()=>setResistorType("6 Band Resistor")}
-            >
-                6 Band Resitor
-            </Button>
+        <Stack direction="row" gap={{md: 5, xs: 1}} alignitems= "center">
+            {
+                ResistorMenuBtns.map((item, index)=> {
+                    return (
+                        <Button key={index}
+                            color="primary"
+                            sx={{
+                                padding: {xs: "2px", md: "0.5rem"},
+                                fontSize: {xs: "14px", md: "1rem"}
+                            }}
+                            variant="contained"
+                            onClick={()=>dispatch(setResistorIndex(index))}
+                        >
+                            {item.title}
+                        </Button>
+                    )
+                })
+            }
         </Stack>
     </Box>
   )

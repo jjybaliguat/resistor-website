@@ -1,22 +1,56 @@
 import Head from 'next/head'
 import { Box, Button, Container, Drawer, Paper, Stack, Typography } from '@mui/material'
-import Resistor from '@/components/resistor';
 import { useState } from 'react';
+import Layout from '@/components/Layout';
 import Footer from '@/components/Footer';
 import ToggleTheme from '@/components/ToggleDark';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import SideMenu from '@/components/Drawer';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoaded } from '@/redux/homepageAction';
+import Resistor1 from '@/components/Resistors/resistor1';
+import Resistor from '@/components/Resistors/resistor';
+import Resistor2 from '@/components/Resistors/resistor2';
+import Resistors from '@/components/Resistors/resistor1';
+import Resistor4 from '@/components/Resistors/resistor4';
+import Resistor3 from '@/components/Resistors/resistor3';
 
-export default function Home(props) {
-  const {mode, setMode} = props
-  const [colors, setColors] = useState(null)
-  const [resistorType, setResistorType] = useState("3 Band Resistor")
-  const [hideNav, setHideNav] = useState(false)
+const ResistorMenuBtns = [
+  {
+      title: "3 Band Resistor",
+  },
+  {
+      title: "4 Band Resistor",
+  },
+  {
+      title: "5 Band Resistor",
+  },
+  {
+      title: "6 Band Resistor",
+  },
+]
 
-  const handleClick = () => {
+const Page = (props) => {
+  const loaded = useSelector(store=>store.homepage?.loaded)
+  const resistorIndex = useSelector(store=>store.homepage?.resistorIndex)
+  const dispatch = useDispatch()
+  const resistorType = ResistorMenuBtns[resistorIndex]?.title
+  const [resistorValues, setResistorValues] = useState({
+    resistance: 0,
+    tolerance: 0
+  })
+
+  const resetValues = () => {
+    setResistorValues({
+      resistance: 0,
+      tolerance: 0
+    })
+  }
+
+  const handleClick = async() => {
     const title = document.querySelector('.welcome_page')
     title.classList.add("remove")
+    setTimeout(()=>{
+      dispatch(setLoaded(true))
+    }, [2000])
   }
   return (
     <>
@@ -26,34 +60,6 @@ export default function Home(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box
-        sx={{
-          position: "relative",
-        }}
-      >
-        <SideMenu
-          hideNav={hideNav}
-          setHideNav={setHideNav}
-        />
-        <Button
-          sx={{
-            position: "absolute",
-            top: "20px",
-            left: "20px",
-            cursor: "pointer",
-            color: "black"
-          }}
-          onClick={()=>setHideNav(!hideNav)}
-        >
-          <MenuIcon
-          color="primary" 
-          sx={{
-            fontSize: "2rem",
-          }}
-           />
-        </Button>
-        <ToggleTheme mode={mode} setMode={setMode} />
-        <Paper sx={{height: "100vh"}}>
         <Box
           sx={{
             height: "100vh",
@@ -67,15 +73,20 @@ export default function Home(props) {
         >
           <Stack gap={3}
             sx={{
-              paddingTop: "3rem"
+              paddingTop: "5rem"
             }}
           >
             <Typography variant="h1"
               sx={{
                 textAlign: "center",
-                fontSize: {md: "3rem", xs: "2rem"}
+                fontSize: {md: "3rem", xs: "2rem"},
               }}
             >{resistorType}</Typography>
+            <Typography
+              sx={{
+                textAlign: "center",
+              }}  
+            >Click the color band to select color</Typography>
             <Box
               sx={{
                 height: "fit-content",
@@ -87,36 +98,91 @@ export default function Home(props) {
                 position: "relative",
               }}
             >
-              <Resistor 
-                  height={{md: "25px", xs: "20px"}} 
-                  width={{md: "550px", xs: "400px"}} 
-                  colors={colors}
+              {
+                resistorIndex == 0 && (
+                <Resistor1
+                    height={{md: "25px", xs: "20px"}} 
+                    width={{md: "550px", xs: "450px"}}
+                    // resistorValues = {resistorValues} 
+                    resetValues={resetValues}
+                />
+                )
+              }
+              {
+                resistorIndex == 1 && (
+                  <Resistor2
+                    height={{md: "25px", xs: "20px"}} 
+                    width={{md: "550px", xs: "450px"}} 
+                    // resistorValues={resistorValues} 
+                    resetValues={resetValues}
                   />
+                )
+              }
+              {
+                resistorIndex == 2 && (
+                  <Resistor3
+                    height={{md: "25px", xs: "20px"}} 
+                    width={{md: "550px", xs: "450px"}}
+                    // resistorValues = {resistorValues} 
+                    resetValues={resetValues}
+                  />
+                )
+              }
+              {
+                resistorIndex == 3 && (
+                  <Resistor4
+                    height={{md: "25px", xs: "20px"}} 
+                    width={{md: "550px", xs: "450px"}} 
+                    resistorValues = {resistorValues} 
+                    resetValues={resetValues}
+
+                  />
+                )
+              }
               <Box
                 sx={{
                   height: "fit-content",
                   // bgcolor: "primary.contrastText",
+                  width: {md: "200px", xs: "150px"},
+                  // width: "fit-content",
                   position: "absolute",
                   top: "2rem",
                   left: "3rem",
                   padding: "10px",
-                  borderRadius: "5px"
+                  borderRadius: "5px",
+                  fontSize: {md: "1.2rem", xs: "1rem"},
                 }}
                 className="container resistance"
               >
-                0 ohm Resistance
+                {`${resistorValues?.resistance} ohm Resistance`}
+              </Box>
+              <Box
+                sx={{
+                  height: "fit-content",
+                  // bgcolor: "primary.contrastText",
+                  top: "2rem",
+                  // width: "fit-content",
+                  width: {md: "200px", xs: "150px"},
+                  position: "absolute",
+                  right: "3rem",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  fontSize: {md: "1.2rem", xs: "1rem"},
+                }}
+                className="container tolerance"
+              >
+                {`${resistorValues.tolerance}% Tolerance`}
               </Box>
             </Box>
           </Stack>
         </Box>
-        </Paper>
         <Box 
         sx={{
           position: "absolute",
           height: "100vh",
           width: "100%",
           bgcolor: "#000",
-          display: "flex",
+          display: loaded ? "none" : "flex",
           alignItems: "center",
           justifyContent: "center",
           top: "0",
@@ -145,7 +211,10 @@ export default function Home(props) {
                     }}
                     className="resistor_container"
                   >
-                    <Resistor height={{md: "20px", xs: "15px"}} width={{md: "500px", xs: "350px"}} />
+                    <Resistor height={{md: "25px", xs: "20px"}} 
+                  width={{md: "550px", xs: "400px"}}  />
+                    {/* <Resistor1 /> */}
+                    {/* <Resistor1 /> */}
                     <Button
                         // color="gray"
                         sx={{
@@ -156,7 +225,8 @@ export default function Home(props) {
                             fontWeight: "bold",
                             zIndex: "10",
                             fontSize: {md: "1.5rem", xs: "1rem"},
-                            zIndex: "10"
+                            zIndex: "9",
+                            padding: "3rem"
                         }}
                         onClick={()=>handleClick()}
                         >
@@ -166,8 +236,15 @@ export default function Home(props) {
             </Stack>
           </Container>
         </Box>
-        <Footer setResistorType={setResistorType} />
-      </Box>
+        <Footer ResistorMenuBtns={ResistorMenuBtns} />
     </>
   )
 }
+
+Page.getLayout = (page) => (
+  <Layout>
+    {page}
+  </Layout>
+);
+
+export default Page

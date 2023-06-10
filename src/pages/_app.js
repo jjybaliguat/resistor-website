@@ -1,31 +1,24 @@
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material'
-import Head from 'next/head'
-import { theme } from '../../theme'
-import "../../theme/custom.css"
+import {React, useEffect} from 'react'
+import "../theme/custom.css"
 import { useState } from 'react'
+import { Provider } from 'react-redux'
+import { createEmotionCache } from '@/utils/create-emotion-cache'
+import { persistStore } from 'redux-persist'
+import LayoutThemeProvider from '@/components/helpers/provider'
+import { store } from '@/lib/store'
 
-export default function App({ Component, pageProps }) {
-  const [mode, setMode] = useState(false)
-  const theme2 = createTheme({
-    palette: {
-      mode: mode ? "light" : "dark",
-    },
-  })
+const clientSideEmotionCache = createEmotionCache();
+
+const App = (props) => {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps: {session, ...pageProps} } = props;
+
   return (
     <>
-      <Head>
-        <title>
-          Resistor Website
-        </title>
-        <meta
-          name="viewport"
-          content="initial-scale=1, width=device-width"
-        />
-      </Head>
-      <ThemeProvider theme={theme2}>
-              <CssBaseline />
-              <Component mode={mode} setMode={setMode} {...pageProps} />
-      </ThemeProvider>
+    <Provider store={store}>
+      <LayoutThemeProvider Component={Component} pageProps={pageProps} emotionCache={emotionCache} />
+    </Provider>
     </>
   )
 }
+
+export default App

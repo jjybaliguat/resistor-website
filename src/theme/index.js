@@ -133,7 +133,6 @@ export const theme = createTheme({
     }
   },
   palette: {
-    mode: "dark",
     neutral: {
       100: '#F3F4F6',
       200: '#E5E7EB',
@@ -162,6 +161,7 @@ export const theme = createTheme({
     primary: {
       main: '#2196f3',
       light: '#64b5f6',
+      opacity: "rgba(100,181,246, 0.5)",
       dark: '#0d47a1',
       contrastText: '#FFFFFF'
     },
