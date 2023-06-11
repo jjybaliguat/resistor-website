@@ -90,7 +90,6 @@ const Page = (props) => {
             <Box
               sx={{
                 height: "fit-content",
-                padding: "10rem 1rem 1rem",
                 // bgcolor: "#000",
                 display: "flex",
                 alignItems: "center",
@@ -99,80 +98,31 @@ const Page = (props) => {
               }}
             >
               {
-                resistorIndex == 0 && (
+                resistorIndex == 0 ? (
                 <Resistor1
                     height={{md: "25px", xs: "20px"}} 
                     width={{md: "550px", xs: "450px"}}
-                    // resistorValues = {resistorValues} 
-                    resetValues={resetValues}
                 />
-                )
-              }
-              {
-                resistorIndex == 1 && (
+                ) :
+                resistorIndex == 1 ? (
                   <Resistor2
-                    height={{md: "25px", xs: "20px"}} 
-                    width={{md: "550px", xs: "450px"}} 
-                    // resistorValues={resistorValues} 
-                    resetValues={resetValues}
-                  />
-                )
-              }
-              {
-                resistorIndex == 2 && (
+                      height={{md: "25px", xs: "20px"}} 
+                      width={{md: "550px", xs: "450px"}}
+                  />  
+                ) :
+                resistorIndex == 2 ? (
                   <Resistor3
-                    height={{md: "25px", xs: "20px"}} 
-                    width={{md: "550px", xs: "450px"}}
-                    // resistorValues = {resistorValues} 
-                    resetValues={resetValues}
-                  />
-                )
-              }
-              {
-                resistorIndex == 3 && (
+                      height={{md: "25px", xs: "20px"}} 
+                      width={{md: "550px", xs: "450px"}}
+                  />  
+                ) :
+                (
                   <Resistor4
-                    height={{md: "25px", xs: "20px"}} 
-                    width={{md: "550px", xs: "450px"}} 
-                    resistorValues = {resistorValues} 
-                    resetValues={resetValues}
-
-                  />
-                )
+                      height={{md: "25px", xs: "20px"}} 
+                      width={{md: "550px", xs: "450px"}}
+                  />  
+                )     
               }
-              <Box
-                sx={{
-                  height: "fit-content",
-                  // bgcolor: "primary.contrastText",
-                  width: {md: "200px", xs: "150px"},
-                  // width: "fit-content",
-                  position: "absolute",
-                  top: "2rem",
-                  left: "3rem",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  fontSize: {md: "1.2rem", xs: "1rem"},
-                }}
-                className="container resistance"
-              >
-                {`${resistorValues?.resistance} ohm Resistance`}
-              </Box>
-              <Box
-                sx={{
-                  height: "fit-content",
-                  // bgcolor: "primary.contrastText",
-                  top: "2rem",
-                  // width: "fit-content",
-                  width: {md: "200px", xs: "150px"},
-                  position: "absolute",
-                  right: "3rem",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  fontSize: {md: "1.2rem", xs: "1rem"},
-                }}
-                className="container tolerance"
-              >
-                {`${resistorValues.tolerance}% Tolerance`}
-              </Box>
             </Box>
           </Stack>
         </Box>

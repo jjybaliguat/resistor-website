@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import ColorDialog from '../Dialogs/colorDialog'
 
 const Resistor2 = (props) => {
-    const {ResetValues, height, width} = props
+    const {...others} = props
     const [open, setOpen] = useState({isOpen: false, index: 0})
 
-    // useEffect(()=> {
-    //     ResetValues()
-    // }, [])
+    const [resistorValue, setResistorValue] = useState({
+        resistance: 0,
+        tolerance: 0
+    })
 
     const [colors, setColors] = useState([
         {
@@ -41,108 +42,143 @@ const Resistor2 = (props) => {
     }
 
 
-  return (
-    <>
-    <ColorDialog
-        open={open}
-        setOpen={setOpen}
-        onClose={onClose}
-    />
-    <Box
-        sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: height,
-            width: width
-        }}
-        className="container"
-    >
-        <Box
-            sx={{
-                position: "relative",
-                bgcolor: "grey",
-                ...props,
-            }}
-        >
-            <Box
+    return (
+        <>
+        <ColorDialog
+            open={open}
+            setOpen={setOpen}
+            onClose={onClose}
+        />
+        <Stack gap={5}>
+            <Stack direction="row" justifyContent="center" gap={3}
                 sx={{
-                    position: "absolute",
-                    height: "500%",
-                    width: "20%",
-                    borderRadius: "20px",
-                    bgcolor: "#815C00 ",
-                    left: "50px",
-                    transform: 'translateY(-39%)',
-                    zIndex: "9"
+                    marginBottom: "3rem",
                 }}
-                className="container"
-            />
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    position: "absolute",
-                    height: "400%",
-                    width: "50%",
+            >
+                <Box
+                    sx={{
+                    height: "fit-content",
+                    // bgcolor: "primary.contrastText",
+                    width: {md: "200px", xs: "150px"},
+                    // width: "fit-content",
+                    // position: "absolute",
+                    // top: "2rem",
+                    // left: "3rem",
+                    padding: "10px",
                     borderRadius: "5px",
-                    bgcolor: "#815C00",
-                    left: "0",
-                    right: "0",
-                    marginRight: "auto",
-                    marginLeft: "auto",
-                    transform: 'translateY(-33%)',
-                    zIndex: "8",
-                }}
+                    fontSize: {md: "1.2rem", xs: "1rem"},
+                    }}
+                    className="container resistance"
+                >
+                    {`${resistorValue?.resistance} ohm Resistance`}
+                </Box>
+                <Box
+                    sx={{
+                    height: "fit-content",
+                    // bgcolor: "primary.contrastText",
+                    // top: "2rem",
+                    // width: "fit-content",
+                    width: {md: "200px", xs: "150px"},
+                    // position: "absolute",
+                    // right: "3rem",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    fontSize: {md: "1.2rem", xs: "1rem"},
+                    }}
+                    className="container tolerance"
+                >
+                {`${resistorValue.tolerance}% Tolerance`}
+                </Box>
+            </Stack>
+            <Box
                 className="container"
             >
-                <Stack gap={{md: 2, xs: 1}} direction="row"
+                <Box
                     sx={{
                         position: "relative",
-                        height: "100%",
-                        width: "85%",
-                        bgcolor: "#815C00",
+                        bgcolor: "grey",
+                        ...others
                     }}
                 >
-                    {
-                    colors.map((color, index)=>{
-                        return (
-                            <Box key={index}
-                                sx={{
-                                    position: "absolute",
-                                    left: color.position,
-                                    width: {md: "30px", xs: "20px"},
-                                    height: "100%",
-                                    bgcolor: colors[index].color,
-                                    cursor: "pointer",
-                                    outline: "1px solid grey",
-                                    borderRadius: "3px"
-                                }}
-                                onClick={()=>setOpen({isOpen: true, index: index})}
-                            />
-                        )
-                    }) 
-                    }
-                </Stack>
-            </Box>
-            <Box
-                sx={{
-                    position: "absolute",
-                    borderRadius: "20px",
-                    height: "500%",
-                    width: "20%",
-                    bgcolor: "#815C00",
-                    right: "50px",
-                    transform: 'translateY(-39%)',
-                    zIndex: "9"
-                }}
-                className="container"
-            />
-        </Box>
-    </Box>
-    </>
-  )
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            height: "500%",
+                            width: "20%",
+                            borderRadius: "20px",
+                            bgcolor: "#815C00 ",
+                            left: "50px",
+                            transform: 'translateY(-39%)',
+                            zIndex: "9"
+                        }}
+                        className="container"
+                    />
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            position: "absolute",
+                            height: "400%",
+                            width: "50%",
+                            borderRadius: "5px",
+                            bgcolor: "#815C00",
+                            left: "0",
+                            right: "0",
+                            marginRight: "auto",
+                            marginLeft: "auto",
+                            transform: 'translateY(-33%)',
+                            zIndex: "8",
+                        }}
+                        className="container"
+                    >
+                        <Stack gap={{md: 2, xs: 1}} direction="row"
+                            sx={{
+                                position: "relative",
+                                height: "100%",
+                                width: "85%",
+                                bgcolor: "#815C00",
+                            }}
+                        >
+                            {
+                            colors.map((color, index)=>{
+                                return (
+                                    <Box key={index}
+                                        sx={{
+                                            position: "absolute",
+                                            left: color.position,
+                                            width: {md: "30px", xs: "20px"},
+                                            height: "100%",
+                                            bgcolor: colors[index].color,
+                                            cursor: "pointer",
+                                            outline: "1px solid grey",
+                                            borderRadius: "3px"
+                                        }}
+                                        onClick={()=>setOpen({isOpen: true, index: index})}
+                                    />
+                                )
+                            }) 
+                            }
+                        </Stack>
+                    </Box>
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            borderRadius: "20px",
+                            height: "500%",
+                            width: "20%",
+                            bgcolor: "#815C00",
+                            right: "50px",
+                            transform: 'translateY(-39%)',
+                            zIndex: "9"
+                        }}
+                        className="container"
+                    />
+                </Box>
+            </Box>        
+        </Stack>
+        </>
+      )
 }
 
 export default Resistor2

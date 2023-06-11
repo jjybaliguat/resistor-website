@@ -20,12 +20,12 @@ function ColorDialog(props) {
     const {open, setOpen, onClose} = props
 
   const handleClose = () => {
-    setOpen({isOpen: false})
+    setOpen({isOpen: false, index: open?.index})
     // onClose(selectedValue);
   };
 
   const handleListItemClick = (value) => {
-    onClose(value, open.index);
+    onClose(value, open?.index);
     handleClose()
   };
 

@@ -1,5 +1,12 @@
 export const colors = [
     {
+      name: "none",
+      color: "none",
+      value: "",
+      multiply: "1",
+      tolerance: 20
+    },  
+    {
       name: "black",
       color: "black",
       value: "0",
@@ -78,13 +85,6 @@ export const colors = [
       value: "",
       multiply: 0.01,
       tolerance: 10
-    },
-    {
-      name: "none",
-      color: "none",
-      value: "",
-      multiply: "1",
-      tolerance: 20
     },
   
   ]
