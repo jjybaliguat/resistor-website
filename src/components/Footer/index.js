@@ -25,12 +25,12 @@ const Footer = (props) => {
                 ResistorMenuBtns.map((item, index)=> {
                     return (
                         <Button key={index}
-                            color={resistorIndex == index? "primary" : "secondary"}
+                            color="primary"
                             sx={{
                                 padding: {xs: "2px", md: "0.5rem"},
                                 fontSize: {xs: "14px", md: "1rem"}
                             }}
-                            variant="contained"
+                            variant={resistorIndex == index? "contained" : "outlined"}
                             onClick={()=>dispatch(setResistorIndex(index))}
                         >
                             {item.title}

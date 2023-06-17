@@ -49,6 +49,7 @@ const SideMenu = (props) => {
                             // icon={<DashboardIcon fontSize="small" />}
                             href={item.href}
                             title={item.title}
+                            onClick={()=>setHideNav(!hideNav)}
                         />
                     )
                 })
