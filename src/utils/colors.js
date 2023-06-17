@@ -1,16 +1,11 @@
 export const colors = [
     {
-      name: "none",
-      color: "none",
-      value: "",
-      multiply: "1",
-      tolerance: 20
-    },  
-    {
       name: "black",
       color: "black",
       value: "0",
       multiply: 1,
+      tolerance: '',
+      temp: 250,
     },
     {
       name: "brown",
@@ -18,6 +13,7 @@ export const colors = [
       value: "1",
       multiply: 10,
       tolerance: 1,
+      temp: 100,
     },
     {
       name: "red",
@@ -25,18 +21,23 @@ export const colors = [
       value: "2",
       multiply: 100,
       tolerance: 2,
+      temp: 50,
     },
     {
       name: "orange",
       color: "orange",
       value: "3",
       multiply: 1000,
+      tolerance: '',
+      temp: 15,
     },
     {
       name: "yellow",
       color: "yellow",
       value: "4",
       multiply: 10000,
+      tolerance: '',
+      temp: 25,
     },
     {
       name: "green",
@@ -44,6 +45,7 @@ export const colors = [
       value: "5",
       multiply: 100000,
       tolerance: 0.5,
+      temp: 20,
     },
     {
       name: "blue",
@@ -51,6 +53,7 @@ export const colors = [
       value: "6",
       multiply: 1000000,
       tolerance: 0.25,
+      temp: 10,
     },
     {
       name: "violet",
@@ -58,6 +61,7 @@ export const colors = [
       value: "7",
       multiply: 10000000,
       tolerance: 0.1,
+      temp: 5,
     },
     {
       name: "grey",
@@ -65,26 +69,30 @@ export const colors = [
       value: "8",
       multiply: 100000000,
       tolerance: 0.05,
+      temp: 1,
     },
     {
       name: "white",
       color: "white",
       value: "9",
       multiply: 1000000000,
+      tolerance: '',
+      temp: '',
     },
     {
       name: "gold",
       color: "gold",
-      value: "",
+      value: "-1",
       multiply: 0.1,
-      tolerance: 5
+      tolerance: 5,
+      temp: '',
     },
     {
       name: "silver",
       color: "silver",
-      value: "",
+      value: "-1",
       multiply: 0.01,
-      tolerance: 10
+      tolerance: 10,
+      temp: '',
     },
-  
   ]

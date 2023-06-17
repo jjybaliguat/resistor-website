@@ -10,10 +10,6 @@ const Resistor1 = (props) => {
         tolerance: 0
     })
 
-    // useEffect(()=> {
-    //     resetValues()
-    // }, [])
-
     const [colors, setColors] = useState([
         {
             color: "",
@@ -36,34 +32,95 @@ const Resistor1 = (props) => {
     ])
 
     useEffect(()=> {
-        let resistance = 0
-        let tolerance = 20
-        console.log(colors);
+        setColors([
+            {
+                color: "",
+                value: "",
+                multiply: 1,
+                position: "15%"
+            },
+            {
+                color: "",
+                value: "",
+                multiply: 1,
+                position: "45%"
+            },
+            {
+                color: "",
+                value: "",
+                multiply: 1,
+                position: "75%"
+            },
+        ])
+    }, [])
 
+    const HandleReset = () => {
+        setColors([
+            {
+                color: "",
+                value: "",
+                multiply: 1,
+                position: "15%"
+            },
+            {
+                color: "",
+                value: "",
+                multiply: 1,
+                position: "45%"
+            },
+            {
+                color: "",
+                value: "",
+                multiply: 1,
+                position: "75%"
+            },
+        ])
+    }
+
+    useEffect(()=> {
+        let resistance = 0
         let count = 0
 
-        colors.map((color)=>{
-            if(color.value == ''){
-                if(count > 0){
-                    count--
+            colors?.map((color)=>{
+                if(color.value === ''){
+                    if(count > 0){
+                        count = count -1
+                    }
+                }else{
+                    count++
                 }
-            }else{
-                count++
+            })
+        // console.log(count)
+        if(count > 1){
+            resistance = (Number(colors[0].value + colors[1].value) * Number(colors[2].multiply))
+            if((resistance - Math.floor(resistance)) !== 0){
+                resistance = resistance.toFixed(2)
             }
-        })
-        console.log(count)
-        if(count > 2){
-            resistance = Number(colors[0].value + colors[1].value) * Number(colors[2].multiply)
-            if(resistance >= 1000){
+            if(resistance >= 1000 && resistance < 1000000){
                 resistance = resistance/1000
                 setResistorValue({
                     resistance: `${resistance}k`,
-                    tolerance
+                    tolerance: 20
                 })
-            }else{
+            }
+            else if(resistance >= 1000000 && resistance < 1000000000){
+                resistance = resistance/1000000
+                setResistorValue({
+                    resistance: `${resistance}M`,
+                    tolerance: 20
+                })
+            }
+            else if(resistance >= 1000000000){
+                resistance = resistance/1000000000
+                setResistorValue({
+                    resistance: `${resistance}G`,
+                    tolerance: 20
+                })
+            }
+            else{
                 setResistorValue({
                     resistance,
-                    tolerance
+                    tolerance: 20
                 })
             }
         }else{
@@ -71,11 +128,13 @@ const Resistor1 = (props) => {
                 resistance: 0,
                 tolerance: 0
             })
+            // setColors(initialColorValues)
         }
     }, [colors])
 
     const onClose = (color, index) => {
         let newColor = [...colors]
+        console.log(color);
         if(newColor.length){
             newColor[index].color = color.color
             newColor[index].value = color.value
@@ -84,6 +143,9 @@ const Resistor1 = (props) => {
         }
     }
 
+    const handleClick = (index) => {
+        setOpen({isOpen: true, index: index})
+    }
 
   return (
     <>
@@ -113,7 +175,7 @@ const Resistor1 = (props) => {
                 }}
                 className="container resistance"
             >
-                {`${resistorValue?.resistance} ohm Resistance`}
+                {`${resistorValue?.resistance} Ω Resistance`}
             </Box>
             <Box
                 sx={{
@@ -184,7 +246,7 @@ const Resistor1 = (props) => {
                         }}
                     >
                         {
-                        colors.map((color, index)=>{
+                        colors?.map((color, index)=>{
                             return (
                                 <Box key={index}
                                     sx={{
@@ -197,7 +259,7 @@ const Resistor1 = (props) => {
                                         outline: "1px solid grey",
                                         borderRadius: "3px"
                                     }}
-                                    onClick={()=>setOpen({isOpen: true, index: index})}
+                                    onClick={()=>handleClick(index)}
                                 />
                             )
                         }) 
@@ -218,7 +280,20 @@ const Resistor1 = (props) => {
                     className="container"
                 />
             </Box>
-        </Box>        
+        </Box>
+        <Box sx={{
+            display: "flex",
+            justifyContent: "center"
+        }}>
+            <Button
+            variant='outlined'
+            color="primary"
+                sx={{
+                    marginTop: "2rem",
+                }}
+            onClick={()=>HandleReset()}
+            >Reset</Button>     
+        </Box> 
     </Stack>
     </>
   )

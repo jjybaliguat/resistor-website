@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import { colors } from '@/utils/colors';
 import { Box } from '@mui/material';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function ColorDialog(props) {
     const {open, setOpen, onClose} = props
@@ -29,11 +31,33 @@ function ColorDialog(props) {
     handleClose()
   };
 
+  if(open.index > 1){
+    return (
+      <Dialog onClose={handleClose} open={open.isOpen}>
+      <DialogTitle>Select Color</DialogTitle>
+      <List sx={{ pt: 0 }}>
+        {colors.map((color, index) => (
+          <ListItem disableGutters key={index}>
+            <ListItemButton onClick={() => handleListItemClick(color)}>
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+                    <Box sx={{bgcolor: color.color, height: "100%", width: "100%"}}/>
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={color.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Dialog>
+    )
+  }
+
   return (
     <Dialog onClose={handleClose} open={open.isOpen}>
       <DialogTitle>Select Color</DialogTitle>
       <List sx={{ pt: 0 }}>
-        {colors.map((color, index) => (
+        {colors.filter((color)=>color.value !== '-1').map((color, index) => (
           <ListItem disableGutters key={index}>
             <ListItemButton onClick={() => handleListItemClick(color)}>
               <ListItemAvatar>
@@ -52,8 +76,7 @@ function ColorDialog(props) {
 
 ColorDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
+  open: PropTypes.object.isRequired,
 };
 
 export default ColorDialog
