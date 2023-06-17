@@ -23,7 +23,7 @@ const Layout = (props) => {
         />
         <Button
           sx={{
-            position: "absolute",
+            position: "fixed",
             top: "20px",
             left: "20px",
             cursor: "pointer",
