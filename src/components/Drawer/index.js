@@ -11,10 +11,6 @@ const menuItems = [
         href: "/"
     },
     {
-        title: "Identifier",
-        href: "/identifier"
-    },
-    {
         title: "Color Chart",
         href: "/color-chart"
     },

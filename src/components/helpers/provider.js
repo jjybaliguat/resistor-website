@@ -24,6 +24,9 @@ const LayoutThemeProvider = (props) => {
           secondary: {
             main: '#4db6ac',
           },
+          brown: {
+            main: mode ? '#fff': '#ab003c',
+          },
           },
           typography: {
             button: {
