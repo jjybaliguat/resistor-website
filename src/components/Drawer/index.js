@@ -45,12 +45,12 @@ const SideMenu = (props) => {
             {
                 menuItems.map((item, index)=> {
                     return (
-                        <NavItem key={index}
-                            // icon={<DashboardIcon fontSize="small" />}
-                            href={item.href}
-                            title={item.title}
-                            onClick={()=>setHideNav(!hideNav)}
-                        />
+                            <NavItem key={index}
+                                // icon={<DashboardIcon fontSize="small" />}
+                                href={item.href}
+                                title={item.title}
+                                onClick={()=>setHideNav(!hideNav)}
+                            />  
                     )
                 })
             }

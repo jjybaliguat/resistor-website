@@ -15,7 +15,7 @@ export const NavItem = (props) => {
         display: 'flex',
         mb: 0.5,
         py: 0,
-        px: 2,
+        px: 1,
       }}
       {...others}
     >
@@ -34,9 +34,10 @@ export const NavItem = (props) => {
             fontWeight: active && 'fontWeightBold',
             justifyContent: 'flex-start',
             px: 3,
+            py: 2,
             textAlign: 'left',
             textTransform: 'none',
-            width: '100%',
+            width: '185px',
             // '& .MuiButton-startIcon': {
             //   color: active ? 'secondary' : 'neutral.400'
             // },
@@ -46,9 +47,7 @@ export const NavItem = (props) => {
             }
           }}
         >
-          <Box sx={{ flexGrow: 1 }}>
             {title}
-          </Box>
         </Button>
       </NextLink>
     </ListItem>
