@@ -15,7 +15,7 @@ const Page = () => {
             <Box
             sx={{
                 minHeight: "100vh",
-                height: "fit-content",
+                height: "100%",
                 paddingBottom: "3rem",
                 width: "100%",
                 paddingTop: "3rem",
@@ -54,7 +54,7 @@ const Page = () => {
                         }}
                         />
                         <Typography sx={{fontSize: "1.5rem"}}>RUBEN NAVALES ATIP</Typography>
-                        <Typography sx={{fontSize: "1rem"}}>PROJECT MANAGER</Typography>
+                        <Typography sx={{fontSize: "1rem", color: "primary.main"}}>PROJECT MANAGER</Typography>
                     </Stack>
                 </Box>
                 <Box 
@@ -89,7 +89,7 @@ const Page = () => {
                                     />
                                     <Stack alignItems="center" gap={1}>
                                         <Typography sx={{fontSize: "1.5rem"}}>RHEA JANE GAMPOSILAO</Typography>
-                                        <Typography sx={{fontSize: "1rem"}}>BUSINESS ANALYST</Typography>
+                                        <Typography sx={{fontSize: "1rem", color: "primary.main"}}>BUSINESS ANALYST</Typography>
                                     </Stack>
                                 </Stack>
                             </Box>
@@ -109,7 +109,7 @@ const Page = () => {
                                 <Stack direction="row" alignItems="center" gap={2}>
                                     <Stack gap={1} alignItems="center">
                                         <Typography sx={{fontSize: "1.5rem"}}>JELO DEL MUNDO</Typography>
-                                        <Typography sx={{fontSize: "1rem"}}>SOFTWARE ARCHITECH/DESIGNER</Typography>
+                                        <Typography sx={{fontSize: "1rem", color: "primary.main"}}>SOFTWARE ARCHITECH/DESIGNER</Typography>
                                     </Stack>
                                     <Avatar 
                                     alt="Atip Pic" 
@@ -149,7 +149,7 @@ const Page = () => {
                                     />
                                     <Stack alignItems="center" gap={1}>
                                         <Typography sx={{fontSize: "1.5rem"}}>CHRISTIAN JAY ALVARADO</Typography>
-                                        <Typography sx={{fontSize: "1rem"}}>DEVELOPER/CODER</Typography>
+                                        <Typography sx={{fontSize: "1rem", color: "primary.main"}}>DEVELOPER/CODER</Typography>
                                     </Stack>
                                 </Stack>
                             </Box>
@@ -169,7 +169,7 @@ const Page = () => {
                                 <Stack direction="row" alignItems="center" gap={2}>
                                     <Stack gap={1} alignItems="center">
                                         <Typography sx={{fontSize: "1.5rem"}}>JERALBRIX MADRID</Typography>
-                                        <Typography sx={{fontSize: "1rem"}}>TESTER</Typography>
+                                        <Typography sx={{fontSize: "1rem", color: "primary.main"}}>TESTER</Typography>
                                     </Stack>
                                     <Avatar 
                                     alt="Atip Pic" 

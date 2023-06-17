@@ -38,7 +38,7 @@ const Layout = (props) => {
           }}
            />
         </Button>
-        <Paper sx={{height: "100vh"}}>
+        <Paper sx={{height: "fit-content"}}>
             {children}
         </Paper>
     </Box>
