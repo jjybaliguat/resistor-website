@@ -14,10 +14,10 @@ const menuItems = [
         title: "Color Chart",
         href: "/color-chart"
     },
-    {
-        title: "The Devs",
-        href: "/devs"
-    },
+    // {
+    //     title: "The Devs",
+    //     href: "/devs"
+    // },
 ]
 
 const SideMenu = (props) => {
